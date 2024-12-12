@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Button } from "./components/ui/button";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -14,9 +15,9 @@ function App() {
       <main>
         <div className="container mx-auto mt-6">
           <div>
-            <button onClick={() => setCount((count) => count + 1)}>
+            <Button onClick={() => setCount((count) => count + 1)}>
               count up
-            </button>
+            </Button>
           </div>
           <div className="font-bold">{count}</div>
         </div>
