@@ -1,3 +1,5 @@
-# shadcn・tailwind.css のセットアップサンプル
-
-構築詳細は[こちら](https://github.com/seeds-yasojima/shadcn-setup-project/pull/1)
+# プロジェクト立ち上げ手順
+```
+npm install // パッケージインストール
+npm run dev // 開発サーバー起動
+```
