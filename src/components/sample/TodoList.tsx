@@ -129,19 +129,17 @@ export const TodoList = () => {
                 タスクは未登録です。
               </div>
             ) : (
-              <>
-                <ul className="divide-y border-t">
-                  {todoList.map((todo) => (
-                    <TodoItem
-                      key={todo.id}
-                      todo={todo}
-                      onCheckTodo={handleCheckTodo}
-                      onDelete={handleDelete}
-                      onChangeTitle={handleChangeTitle}
-                    />
-                  ))}
-                </ul>
-              </>
+              <ul className="divide-y border-t">
+                {todoList.map((todo) => (
+                  <TodoItem
+                    key={todo.id}
+                    todo={todo}
+                    onCheckTodo={handleCheckTodo}
+                    onDelete={handleDelete}
+                    onChangeTitle={handleChangeTitle}
+                  />
+                ))}
+              </ul>
             )}
           </CardContent>
         </Card>
