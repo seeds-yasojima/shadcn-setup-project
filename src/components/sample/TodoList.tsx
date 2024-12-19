@@ -12,9 +12,9 @@ import { CompletedProgress } from "./CompletedProgress";
 import { TodoCreateForm } from "./TodoCreateForm";
 
 export type Todo = {
-  id: number;
-  title: string;
-  isComplete: boolean;
+  id: number; // ID
+  title: string; // タイトル
+  isComplete: boolean; // 完了フラグ true: 完了, false: 未完了
 };
 
 const initialTodoList: Todo[] = [];
@@ -30,7 +30,12 @@ export const TodoList = () => {
   /** 削除 */
   const handleDelete = (id: number) => {
     if (confirm("削除しますか？")) {
+      // 対象のidを省いたtodoList
       const deletedTodoLists = todoList.filter((todo) => todo.id !== id);
+
+      console.log(deletedTodoLists);
+
+      // Todoリストを更新
       setTodoList(deletedTodoLists);
     }
   };
@@ -39,32 +44,48 @@ export const TodoList = () => {
   const handleCreate = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    // 新規のTodoタイトルが未入力の場合は何もしない
     if (!newTodoTitle) {
       return;
     }
 
     const newTodoItem = {
-      id: Math.floor(Math.random() * 10000),
-      title: newTodoTitle,
-      isComplete: false,
+      id: Math.floor(Math.random() * 10000), // ランダムな値。今回は新規のIDとして用いてます。
+      title: newTodoTitle, // 入力されたタイトル
+      isComplete: false, // 完了フラグ 初期値はfalse(= 未完了)
     };
 
+    // 新規のTodoを先頭に追加
     const newTodoList = [newTodoItem, ...todoList];
+
+    console.log(newTodoList);
+
+    // Todoリストを更新
     setTodoList(newTodoList);
+
+    // 入力欄をクリア
     setNewTodoTitle("");
   };
 
   /** チェックボックス */
   const handleCheckTodo = (e: boolean, todo: Todo) => {
+    // チェックボックスの状態を変更
     const newTodoList = todoList.map((item) => {
+      // 対象のIDのTodoのisCompleteを変更
       if (item.id === todo.id) {
         return {
           ...item,
-          isComplete: e,
+          isComplete: e, // チェックボックスの状態を変更。スプレッド構文を使用して、isCompleteを上書きする
         };
       }
+
+      // 対象のID以外のTodoはそのまま返す
       return item;
     });
+
+    console.log(newTodoList);
+
+    // Todoリストを更新
     setTodoList(newTodoList);
   };
 
@@ -74,11 +95,15 @@ export const TodoList = () => {
       if (item.id === id) {
         return {
           ...item,
-          title: title,
+          title: title, // チェックボックスの状態を変更。スプレッド構文を使用して、titleを上書きする
         };
       }
       return item;
     });
+
+    console.log(newTodoList);
+
+    // Todoリストを更新
     setTodoList(newTodoList);
   };
 
