@@ -26,7 +26,12 @@ export const TodoCreateForm: React.FC<Props> = ({
               onChangeNewTodoTitle(e.target.value);
             }}
           />
-          <Button size="sm" className="w-24" type="submit">
+          <Button
+            size="sm"
+            className="w-24"
+            type="submit"
+            disabled={!newTodoTitle}
+          >
             登録
           </Button>
         </div>

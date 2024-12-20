@@ -9,7 +9,7 @@ export const JsonCode: React.FC<Props> = ({ data }) => {
     <div className="rounded-md bg-slate-950 overflow-hidden">
       <div className="bg-slate-800 text-white p-2 text-xs">JSON</div>
       <pre className=" text-white font-mono p-5 text-sm whitespace-pre-wrap max-h-[600px] overflow-auto">
-        <span>{data}</span>
+        <code>{data}</code>
       </pre>
     </div>
   );
